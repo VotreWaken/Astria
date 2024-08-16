@@ -16,6 +16,7 @@
 - Shared Kernel class library implementation for DDD & Event Sourcing
 - EventStoreDB Repository and custom Client for storing of events
 - nUnit-based Test-driven Design (TDD) with Integration Testing
+- Cross-Cutting Concern
 
 ## Technologies
 
@@ -31,3 +32,18 @@
 - FluentAssertions
 - Swashbuckle
 - Serilog
+
+## Running the Project
+
+To run the project, follow these steps:
+
+1. Clone the repository to your local machine.
+2. Open the solution in your IDE of choice.
+3. Build the solution to restore the dependencies.
+4. Update the connection string in the appsettings.json file to point to your database.
+5. Start the API project
+6. The database migrations will be automatically applied on start-up. If the database does not exist, it will be created.
+7. The API should be accessible at https://localhost:<port>/api/<controller> where <port> is the port number specified in the project properties and <controller> is the name of the API controller.
+
+## Continuous Integration
+This project uses GitHub Actions to build and test the project on every commit to the main branch. The workflow consists of several steps, including restoring packages, building the project and running tests.

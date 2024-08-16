@@ -47,3 +47,8 @@ To run the project, follow these steps:
 
 ## Continuous Integration
 This project uses GitHub Actions to build and test the project on every commit to the main branch. The workflow consists of several steps, including restoring packages, building the project and running tests.
+| CI | win-x64 | linux-x64 | osx-x64 |
+|-|-|-|-|
+| <sup>Authentication Service</sup> | ![Win Workflow](https://github.com/VotreWaken/Astria/actions/workflows/dotnet.yml/badge.svg) | | |
+
+

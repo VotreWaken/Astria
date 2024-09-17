@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BoundedContexts\ImageManagment\Exceptions\" />
+    <Folder Include="BoundedContexts\ImageManagment\ValueObjects\" />
+    <Folder Include="BoundedContexts\ModelTextureManagment\Exceptions\" />
+    <Folder Include="BoundedContexts\ModelTextureManagment\ValueObjects\" />
+    <Folder Include="BoundedContexts\ProductPreviewImageManagment\Exceptions\" />
+    <Folder Include="BoundedContexts\ProductPreviewImageManagment\ValueObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Astria.EventSourcingRepository\Astria.EventSourcingRepository.csproj" />
+    <ProjectReference Include="..\..\Astria.QueryRepository\Astria.QueryRepository.csproj" />
+    <ProjectReference Include="..\..\Astria.SharedKernel\Astria.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

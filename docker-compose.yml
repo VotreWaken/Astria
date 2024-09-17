@@ -1,0 +1,274 @@
+version: "3.7"
+
+services:
+  celestial-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3306:3306'
+    expose:
+      - '3306'
+    volumes:
+      - mysqldb_data:/var/lib/mysql
+
+  celestial-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27017:27017
+    volumes:
+      - mongodb_data:/data/db
+      
+  celestial-order-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_order'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27018:27017
+    volumes:
+      - order_mongodb_data:/data/db
+      
+  celestial-order-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3307:3306'
+    expose:
+      - '3306'
+    volumes:
+      - order_mysqldb_data:/var/lib/mysql
+      
+      
+  celestial-product-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_product'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27019:27017
+    volumes:
+      - product_mongodb_data:/data/db
+      
+  celestial-product-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3308:3306'
+    expose:
+      - '3306'
+    volumes:
+      - product_mysqldb_data:/var/lib/mysql
+      
+  celestial-models-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_order'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27020:27017
+    volumes:
+      - models_mongodb_data:/data/db
+      
+  celestial-models-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3309:3306'
+    expose:
+      - '3306'
+    volumes:
+      - models_mysqldb_data:/var/lib/mysql
+      
+  celestial-images-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_order'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27021:27017
+    volumes:
+      - images_mongodb_data:/data/db
+      
+  celestial-images-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3310:3306'
+    expose:
+      - '3306'
+    volumes:
+      - images_mysqldb_data:/var/lib/mysql
+      
+  celestial-userProductLikes-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_userProductLikes'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27022:27017
+    volumes:
+      - userProductLikes_mongodb_data:/data/db
+
+  celestial-userProductLikes-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial_userProductLikes'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3311:3306'
+    expose:
+      - '3306'
+    volumes:
+      - userProductLikes_mysqldb_data:/var/lib/mysql
+      
+      
+    
+    
+    
+    
+      
+  celestial-userFollows-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_userFollows'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27023:27017
+    volumes:
+      - userFollows_mongodb_data:/data/db
+
+  celestial-userFollows-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial_userFollows'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3312:3306'
+    expose:
+      - '3306'
+    volumes:
+      - userFollows_mysqldb_data:/var/lib/mysql
+      
+      
+      
+      
+      
+  celestial-productComments-mongo-db:
+    image: mongo:latest
+    environment:
+      MONGO_INITDB_DATABASE: 'celestial_productComments'
+      MONGO_INITDB_ROOT_USERNAME: 'root'
+      MONGO_INITDB_ROOT_PASSWORD: 'rootpassword'
+    ports:
+      - 27024:27017
+    volumes:
+      - productComments_mongodb_data:/data/db
+
+  celestial-productComments-mysql-db:
+    image: mysql:latest
+    restart: always
+    environment:
+      MYSQL_DATABASE: 'celestial_productComments'
+      MYSQL_USER: 'user'
+      MYSQL_PASSWORD: 'password'
+      MYSQL_ROOT_PASSWORD: 'password'
+    ports:
+      - '3313:3306'
+    expose:
+      - '3306'
+    volumes:
+      - productComments_mysqldb_data:/var/lib/mysql
+      
+      
+      
+
+  celestial-eventstore-db:
+    image: eventstore/eventstore:latest
+    environment:
+      - EVENTSTORE_CLUSTER_SIZE=1
+      - EVENTSTORE_RUN_PROJECTIONS=All
+      - EVENTSTORE_START_STANDARD_PROJECTIONS=true
+      - EVENTSTORE_INSECURE=true
+      - EVENTSTORE_ENABLE_ATOM_PUB_OVER_HTTP=true
+    ports:
+      - "1113:1113"
+      - "2113:2113"
+    volumes:
+      - type: volume
+        source: eventstore-volume-data
+        target: /var/lib/eventstore
+      - type: volume
+        source: eventstore-volume-logs
+        target: /var/log/eventstore
+        
+  rabbitmq:
+    image: rabbitmq:management
+    environment:
+      RABBITMQ_DEFAULT_USER: guest
+      RABBITMQ_DEFAULT_PASS: guest
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf
+  
+volumes:
+  mysqldb_data:
+  mongodb_data:
+  order_mysqldb_data:
+  order_mongodb_data:
+  product_mongodb_data:
+  product_mysqldb_data:
+  models_mongodb_data:
+  models_mysqldb_data:
+  images_mongodb_data:
+  images_mysqldb_data:
+  userProductLikes_mongodb_data:
+  userProductLikes_mysqldb_data:
+  userFollows_mongodb_data:
+  userFollows_mysqldb_data:
+  productComments_mongodb_data:
+  productComments_mysqldb_data:
+  eventstore-volume-data:
+  eventstore-volume-logs:

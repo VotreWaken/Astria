@@ -177,6 +177,27 @@ namespace AuthenticationManagement.API.Controllers
 		}
 
 		[HttpPatch]
+		[Route("{id}/ChangeUserFullName")]
+		[AllowAnonymous]
+		public async Task<IActionResult> ChangeUserFullName([FromForm] UpdateUserNameDTO dto, Guid id)
+		{
+			var command = new AdminAccountChangeNameAndSurnameCommand
+			{
+				// ExpectedVersion = dto.ExpectedVersion,
+				UserId = id,
+				FirstName = dto.FirstName,
+				LastName = dto.LastName
+			};
+
+			CommandResult result = await _mediator.Send(command);
+			return result.IsSuccess switch
+			{
+				true => Ok(),
+				false => HandleFailedCommand(result)
+			};
+		}
+
+		[HttpPatch]
 		[Route("{id}/ChangePassword")]
 		public async Task<IActionResult> ChangePassword([FromForm] UpdatePasswordDTO dto, Guid id)
 		{

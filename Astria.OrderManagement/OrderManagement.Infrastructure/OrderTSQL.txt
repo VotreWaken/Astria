@@ -1,0 +1,31 @@
+$ winpty docker exec -it celestial-celestial-product-mysql-db-1 mysql -u root -ppassword
+
+USE celestial;
+GO
+
+CREATE TABLE Products (
+    ProductId CHAR(36) PRIMARY KEY,
+    Name VARCHAR(255) NOT NULL,
+    Description TEXT,
+    Price DECIMAL(18, 2) NOT NULL,
+    IsAvailable BOOLEAN NOT NULL DEFAULT TRUE,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP
+);
+GO
+
+CREATE TABLE Models (
+    ModelId CHAR(36) PRIMARY KEY,
+    ProductId CHAR(36) NOT NULL,
+    ModelData LONGBLOB NOT NULL,
+    ModelTextures TEXT,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ProductId) REFERENCES Products(ProductId)
+);
+
+CREATE TABLE ModelTextures (
+    TextureId CHAR(36) PRIMARY KEY,
+    ModelId CHAR(36) NOT NULL,
+    TextureUrl VARCHAR(255) NOT NULL,
+    CreatedAt DATETIME DEFAULT CURRENT_TIMESTAMP,
+    FOREIGN KEY (ModelId) REFERENCES Models(ModelId)
+);

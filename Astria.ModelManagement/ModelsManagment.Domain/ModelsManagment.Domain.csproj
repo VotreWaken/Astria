@@ -1,0 +1,20 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BoundedContexts\ModelsManagment\Exceptions\" />
+    <Folder Include="BoundedContexts\ModelsManagment\ValueObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Astria.EventSourcingRepository\Astria.EventSourcingRepository.csproj" />
+    <ProjectReference Include="..\..\Astria.QueryRepository\Astria.QueryRepository.csproj" />
+    <ProjectReference Include="..\..\Astria.SharedKernel\Astria.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -15,3 +15,6 @@ obj/
 
 # Other
 *.log
+
+# Configuration Files
+appsettings.json

@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="BoundedContexts\ProductCommentsManagement\Exceptions\" />
+    <Folder Include="BoundedContexts\ProductCommentsManagement\ValueObjects\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Astria.SharedKernel\Astria.SharedKernel.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,6 @@
+@UserFollowsManagement.API_HostAddress = http://localhost:5213
+
+GET {{UserFollowsManagement.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

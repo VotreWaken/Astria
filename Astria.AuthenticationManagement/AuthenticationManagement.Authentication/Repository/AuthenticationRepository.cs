@@ -209,6 +209,17 @@ namespace AuthenticationManagement.Authentication.Repository
 			await _userManager.UpdateAsync(matchingUser);
 		}
 
+		public async Task ChangeUserName(Guid userId, string userFirstName, string userLastName)
+		{
+			User matchingUser = await _userManager.FindByIdAsync(userId.ToString());
+
+			if (matchingUser is null)
+				throw new UserCannotBeFoundException(userId);
+
+			matchingUser.UserName = userFirstName + userLastName;
+			await _userManager.UpdateAsync(matchingUser);
+		}
+
 		public async Task<bool> IsCurrentPassword(Guid userId, string password)
 		{
 			User matchingUser = await _userManager.FindByIdAsync(userId.ToString());

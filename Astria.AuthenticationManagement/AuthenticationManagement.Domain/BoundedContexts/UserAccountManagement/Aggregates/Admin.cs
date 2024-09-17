@@ -59,6 +59,21 @@ namespace AuthenticationManagement.Domain.BoundedContexts.UserAccountManagement.
 			));
 		}
 
+		public void ChangeName(Guid userId, string firstName, string lastName)
+		{
+			Console.WriteLine($"Changing current email {Name} to {firstName} {lastName} for UserId: {AggregateId}");
+			
+			AggregateId = userId;
+			Name = (UserFullName)CheckAndAssign(UserFullName.Create(firstName, lastName));
+			
+			if (_businessLogicErrors?.Any() == true)
+			{
+				throw new DomainBusinessLogicException(_businessLogicErrors);
+			}
+
+			RaiseEvent(new AdminAccountChangeNameAndSurname(AggregateId, Name));
+		}
+
 		public void ChangePassword(string currentPassword, string newPassword)
 		{
 			var validatedNewPassword = (HashedPassword)CheckAndAssign(HashedPassword.Create(newPassword));
@@ -102,6 +117,7 @@ namespace AuthenticationManagement.Domain.BoundedContexts.UserAccountManagement.
 				case AdminAccountVerifiedEvent x: OnAccountVerificationChanged(x); break;
 				case AdminAccountChangedEmailEvent x: OnEmailChanged(x); break;
 				case AdminAccountChangedPasswordEvent x: OnPasswordChanged(x); break;
+				case AdminAccountChangeNameAndSurname x: OnNameChanged(x); break;
 			}
 		}
 
@@ -128,6 +144,13 @@ namespace AuthenticationManagement.Domain.BoundedContexts.UserAccountManagement.
 			AggregateId = @event.AggregateId;
 			Email = @event.Email;
 			Name = @event.Name;
+		}
+
+		private void OnNameChanged(AdminAccountChangeNameAndSurname @event)
+		{
+			Console.WriteLine("Succsessfully change FullName to " + @event.FullName);
+			AggregateId = @event.AggregateId;
+			Name = @event.FullName;
 		}
 
 		private void OnPasswordChanged(AdminAccountChangedPasswordEvent @event)

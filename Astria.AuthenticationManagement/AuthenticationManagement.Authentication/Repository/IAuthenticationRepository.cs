@@ -25,6 +25,7 @@ namespace AuthenticationManagement.Authentication.Repository
 		Task VerifyEmail(Guid userId, string verificationToken);
 		Task ChangePassword(Guid userId, string hashedPassword);
 		Task ChangeEmail(Guid userId, string newEmail);
+		Task ChangeUserName(Guid userId, string userFirstName, string userLastName);
 		Task DeleteUser(Guid userId);
 
 	}

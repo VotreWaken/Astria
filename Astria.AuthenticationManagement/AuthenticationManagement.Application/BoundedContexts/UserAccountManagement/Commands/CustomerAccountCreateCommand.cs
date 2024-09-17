@@ -47,7 +47,7 @@ namespace AuthenticationManagement.Application.BoundedContexts.UserAccountManage
 					lastname: command.Lastname,
 					userImageId: command.UserImageId
 				);
-
+				await _authRepository.CreateCustomer(customer.AggregateId, customer.Email, customer.Password, customer.UserImageId);
 				await _repository.SaveAsync(customer);
 
 				return CommandResult.Success(customer.AggregateId);
